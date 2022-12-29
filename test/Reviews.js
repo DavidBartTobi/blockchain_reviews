@@ -1,26 +1,28 @@
 const { expect } = require("chai");
-const { TruffleContract } = require("@truffle/contract");
-const ReviewSystem = require("../build/contracts/ReviewSystem.json");
+const TruffleContract = require("@truffle/contract");
+const Reviews = require("../build/contracts/Reviews.json");
 
 // Test the ReviewSystem contract
-describe("ReviewSystem", () => {
+describe("Reviews", () => {
   // Test variables
   let accounts;
-  let reviewSystem;
+  let reviews;
 
   // Before each test, create a new instance of the contract
   beforeEach(async () => {
     // Get test accounts
     accounts = await web3.eth.getAccounts();
 
-    // Create a new instance of the ReviewSystem contract
-    reviewSystem = await TruffleContract(ReviewSystem).new();
+    // Create a new instance of the Reviews contract
+    reviews = await TruffleContract(Reviews)
+      .setProvider(web3.currentProvider)
+      .new();
   });
 
   // Test that a review can be added successfully
   it("should add a review", async () => {
     // Add a review
-    await reviewSystem.addReview(
+    await reviews.addReview(
       "0x1234567890",
       "0x0987654321",
       5,
@@ -29,7 +31,7 @@ describe("ReviewSystem", () => {
     );
 
     // Get the review from the contract
-    const review = await reviewSystem.reviews("0x1234567890");
+    const review = await reviews.reviews("0x1234567890");
 
     // Check that the review was added successfully
     expect(review[0]).to.equal("0x1234567890");
@@ -41,7 +43,7 @@ describe("ReviewSystem", () => {
   // Test that a review link can be generated successfully
   it("should generate a review link", async () => {
     // Generate a review link
-    const reviewLink = await reviewSystem.generateReviewLink("0x0987654321", {
+    const reviewLink = await reviews.generateReviewLink("0x0987654321", {
       from: accounts[0],
     });
 
@@ -52,7 +54,7 @@ describe("ReviewSystem", () => {
   // Test that a user can be rewarded for posting a review
   it("should reward a reviewer", async () => {
     // Add a review
-    await reviewSystem.addReview(
+    await reviews.addReview(
       "0x1234567890",
       "0x0987654321",
       5,
@@ -64,7 +66,7 @@ describe("ReviewSystem", () => {
     const balanceBefore = await web3.eth.getBalance(accounts[0]);
 
     // Reward the reviewer
-    await reviewSystem.rewardReviewer("0x1234567890", { from: accounts[0] });
+    await reviews.rewardReviewer("0x1234567890", { from: accounts[0] });
 
     // Get the balance of the reviewer after they are rewarded
     const balanceAfter = await web3.eth.getBalance(accounts[0]);
