@@ -1,0 +1,77 @@
+/* Review form */
+#review-form {
+  /* Form layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Form spacing */
+  margin: 20px;
+  padding: 20px;
+}
+
+/* Rating */
+#rating {
+  /* Star layout */
+  display: flex;
+
+  /* Star spacing */
+  margin: 10px 0;
+}
+
+/* Star */
+.fa-star {
+  /* Star size and color */
+  font-size: 24px;
+  color: #ccc;
+
+  /* Star spacing */
+  margin: 0 5px;
+}
+
+/* Review */
+#review {
+  /* Review layout */
+  width: 80%;
+  height: 200px;
+
+  /* Review spacing */
+  margin: 10px 0;
+
+  /* Review font and color */
+  font-size: 16px;
+  color: #555;
+}
+
+/* Email */
+#email {
+  /* Email layout */
+  width: 80%;
+
+  /* Email spacing */
+  margin: 10px 0;
+
+  /* Email font and color */
+  font-size: 16px;
+  color: #555;
+}
+
+/* Submit button */
+#submit-button {
+  /* Button layout */
+  width: 80%;
+  height: 40px;
+
+  /* Button font and color */
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+
+  /* Button hover effect */
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#submit-button:hover {
+  background-color: #0069d9;
+}
