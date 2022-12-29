@@ -1,7 +1,7 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 // This contract allows users to post reviews and get rewarded in Ether
-contract ReviewSystem {
+contract Reviews {
   // Map to store reviews
   mapping(bytes32 => Review) public reviews;
 
