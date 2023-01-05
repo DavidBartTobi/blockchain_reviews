@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Web3 Tickets dApp</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Review System</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
-    <nav id="header" class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand">Tickets</a>
-        <div id="account" class="d-flex"></div>
+    <!-- Review form -->
+    <form id="review-form">
+      <!-- Rating -->
+      <div id="rating">
+        <!-- Star rating -->
+        <span class="fa fa-star" data-rating="1"></span>
+        <span class="fa fa-star" data-rating="2"></span>
+        <span class="fa fa-star" data-rating="3"></span>
+        <span class="fa fa-star" data-rating="4"></span>
+        <span class="fa fa-star" data-rating="5"></span>
       </div>
-    </nav>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="tickets"></div>
-        </div>
-      </div>
+      <!-- Review -->
+      <textarea id="review" placeholder="Enter your review..."></textarea>
+
+      <!-- Email -->
+      <input type="email" id="email" placeholder="Enter your email..." />
+
+      <!-- Submit button -->
+      <button type="submit" id="submit-button">Submit Review</button>
+    </form>
+    
+    <div id="confirmation-message" style="display: none;">
+      Thank you for your review!
     </div>
 
+    <!-- JavaScript -->
     <script type="module" src="index.js"></script>
   </body>
 </html>
