@@ -22,6 +22,8 @@ contract ReviewSystem {
 
 // Contract functions
   function addReview(uint _rating, string memory _review, address payable _business, address payable _reviewer) public {
+    // Check that rating is between 1 and 5
+    require(_rating >= 1 && _rating <= 5, "Rating must be between 1 and 5");
     // Increment review count
     reviewCount++;
 
